@@ -10,11 +10,11 @@ public class Pratice01 {
 		Pratice01 a = new Pratice01();
 		
 		//a.method1();
-		a.method2();
+		//a.method2();
 		//a.method3();
 		//a.method4();
 		//a.method5();
-		//a.method6();
+		a.method6();
 	}	
 	
 	public void method1() {
@@ -140,6 +140,6 @@ public class Pratice01 {
 		System.out.println("필요한 바구니 수 : "+c);
 		
 		
-	}
+	} 
 	
 }
