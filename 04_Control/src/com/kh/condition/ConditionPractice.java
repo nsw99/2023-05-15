@@ -20,15 +20,17 @@ public class ConditionPractice {
 
 		a = sc.nextInt();
 
-		if (a % 2 == 0 && a > 0)
-			System.out.println("짝수다");
+		// a > 0이 공통으로 들어가고 있잖아요~ 이 경우 바깥으로 빼서 중첩 if 형식으로도 해보세요!
 
-		else if (a % 2 != 0 && a > 0)
-			System.out.println("홀수다");
+		if (a > 0) {
+			if (a % 2 == 0) {
+				System.out.println("짝수");
+			} else
+				System.out.println("홀수");
+		}
 
 		else
 			System.out.println("양수만 입력해주세요");
-
 	}
 
 	/*
@@ -55,22 +57,28 @@ public class ConditionPractice {
 
 	/*
 	 * A 피자가게는 피자를 두 조각에서 열 조각까지 원하는 조각 수로 잘라준다. 피자 조각 수와 피자를 먹는 사람의 수를 입력받아 한 사람 당
-	 * 최소 한 조각 이상 피자를 먹으려면 최소 몇 판의 피자를 시켜야 하는지 출력하세요.
+	 * 최소 한 조각 이상 피자를 먹으려면 최소 몇 판의 피자를 시켜야 하는지 출력하세요. 한조각 이상 먹으려면 a>b - > b>=a 이거를
+	 * c로잡고
 	 * 
 	 * 피자 조각 수 : 7 피자 먹는 사람 수 : 10 2
 	 * 
 	 */
 	public void practice3() {
 
-		int a, b, c = 0;
+		int a, b, c, e = 0;
 		System.out.print("피자 조각수 : ");
 		a = sc.nextInt();
 		System.out.print("피자 먹는 사람 수 : ");
 		b = sc.nextInt();
-		c = (a + a) % b;
-
+		int d = b / a; // <- 이걸 잘 이용해보셨으면 좋겠어요!
+		e = a / b;
 		if (b > a) {
-			System.out.println("최소" + c + "판의 피자가 필요함");
+			d++;
+			System.out.println("최소" + d + "판의 피자가 필요함");
+		} // 조각 수랑 사람수가 같을때는 어떻게 출력하게 하나요? -> 같을 때는 1이겠죠~~ 그렇지만! 이렇게 되면 또 피자 조각수랑 피자 먹는 수가
+			// 배수인 경우도 다시 생각하시게 될거에요!
+		else if (e >= 1) {
+			System.out.println(e + "판의 피자가 필요");
 		}
 
 	}
@@ -112,19 +120,20 @@ public class ConditionPractice {
 	 */
 	public void practice5() {
 
-		int a = 0;
+		double a = 0;
 		System.out.print("구매한 옷 가격 : ");
-		a = sc.nextInt();
+		a = sc.nextDouble();
 
 		if (a >= 500000) {
-			System.out.println(a - a * 0.2);
+			System.out.printf("%.0f", a - a * 0.2);
 
 		} else if (a >= 300000) {
-			System.out.println(a - a * 0.1);
+			System.out.printf("%.0f", a - a * 0.1);
 
 		} else
-			System.out.printf("%d", a - a * 0.05);
-		// 결과값에 나오는 소수점 어떻게 없어지게 하나요?
+			System.out.printf("%.0f", a - a * 0.05);
+		// 결과값에 나오는 소수점 어떻게 없어지게 하나요? -> %.0f 사용해보세요! 결과값이 double! 실수이니 %f를 사용하고 소수점 아래
+		// 버리는 건 저렇게!
 
 	}
 
@@ -174,7 +183,7 @@ public class ConditionPractice {
 				System.out.println("로그인 성공!");
 			} else
 				System.out.println("비밀번호가 틀렸습니다.");
-		} else if (s != s1)
+		} else // 요기도 문자열 끼리 비교입니다!! 그리고 위에서 일치한지 체크해서 굳이 else if 사용하지 않아도 될거에요!
 			System.out.println("아이디가 틀렸습니다");
 
 	}
@@ -188,31 +197,25 @@ public class ConditionPractice {
 	 * 
 	 */
 	public void practice8() {
-		
-		double a,b,BMI= 0;
+
+		double a, b, BMI = 0;
 		System.out.print("키 : \n");
 		a = sc.nextDouble();
 		System.out.print("몸무게 : \n");
 		b = sc.nextDouble();
-		BMI = (b/(a*a));
-		
-		if (BMI<18.5) {
-			System.out.println("BMI 지수: "+BMI+" 저체중");
-			
-		}
-		else if(BMI<23)
-		{
-			System.out.println("BMI 지수: "+BMI+" 정상체중");
-		}
-		else if(BMI<25)
-		{
-			System.out.println("BMI 지수: "+BMI+" 과체중");
-		}
-		else if(BMI<30)
-		{
-			System.out.println("BMI 지수: "+BMI+" 비만");
-		}
-		else System.out.println("과체중");
+		BMI = (b / (a * a));
+
+		if (BMI < 18.5) {
+			System.out.println("BMI 지수: " + BMI + " 저체중");
+
+		} else if (BMI < 23) {
+			System.out.println("BMI 지수: " + BMI + " 정상체중");
+		} else if (BMI < 25) {
+			System.out.println("BMI 지수: " + BMI + " 과체중"); // 여기 과체중!
+		} else if (BMI < 30) {
+			System.out.println("BMI 지수: " + BMI + " 비만");
+		} else
+			System.out.println("고도 비만"); // 여기 과체중!! 고도 비만 인거겠죠?
 
 	}
 
@@ -224,46 +227,41 @@ public class ConditionPractice {
 	 * 
 	 */
 	public void practice9() {
-		
-		int a , b =0;
+
+		int a, b = 0;
 		String c = "+";
 		String c1 = "-";
 		String c2 = "*";
 		String c3 = "/";
 		String c4 = "%";
-		
+
 		String s = "";
 		System.out.println("연산자를 입력해주세요");
-		s = sc.nextLine();
+		s = sc.nextLine(); // 위에 구문이랑 이 구문 nextInt 다음에 적으면 작동이 안되는데 왜 그런건가요? -> nextLine을 제외한 나머지 저희가 사용했던
+							// next() 부터 다른 nextInt, nextFloat 등
+							// enter가 남아요! 그래서 이 부분 해소하려면 nextLine을 한번 추가해줘야해요!
+							// Variable - D_KeyboardInput 파일 확인해보시면 알 수 있어요!
+							// 요래서~ 실제로는 nextLine만 사용하는 방법으로 숫자는 다른 방식을 활용하게 되는데요
+							// 반복문에서 사용하시게 될 거에요 :) 저희 반복문 할 거 많아요~~! 할 수 있음!!
+
 		System.out.print("두개의 양수를 입력해 주세요 :");
 		a = sc.nextInt();
 		b = sc.nextInt();
-		
-		if(a>0 && b>0)
-		{	
-			System.out.println("!");
-			if(c.equals(s))
-			{
-				System.out.println("합 : "+(a+b));
+
+		if (a > 0 && b > 0) {
+
+			if (c.equals(s)) {
+				System.out.println("합 : " + (a + b));
+			} else if (c1.equals(s)) {
+				System.out.println("차 : " + (a - b));
+			} else if (c2.equals(s)) {
+				System.out.println("곱 : " + (a * b));
+			} else if (c3.equals(s)) {
+				System.out.println("나누기 : " + (a / b));
+			} else if (c4.equals(s)) {
+				System.out.println("몫 : " + (a % b));
 			}
-			else if(c.equals(c1))
-			{
-				System.out.println("차 : "+(a-b));
-			}
-			else if(c.equals(c2))
-			{
-				System.out.println("곱 : "+(a*b));
-			}
-			else if(c.equals(c3))
-			{
-				System.out.println("나누기 : "+(a/b));
-			}
-			else if(c.equals(c4))
-			{
-				System.out.println("몫 : "+(a%b));
-			}
-			
-			
+
 		}
 
 	}
@@ -275,15 +273,39 @@ public class ConditionPractice {
 	 */
 	public void practice10() {
 
+		String a, b, c, d, e = "";
+		System.out.print("번호를 눌러주세요");
+		a = sc.nextLine();
+
+		if (a.equals("입력")) {
+
+			System.out.println(a + "메뉴입니다");
+
+		} else if (a.equals("수정")) {
+
+			System.out.println(a + "메뉴입니다");
+
+		} else if (a.equals("조회")) {
+
+			System.out.println(a + "메뉴입니다");
+
+		} else if (a.equals("삭제")) {
+
+			System.out.println(a + "메뉴입니다");
+
+		} else
+			System.out.print("종료합니다");
+
 	}
 
 	/*
 	 * 중간고사, 기말고사, 과제점수, 출석회수를 입력하고 Pass 또는 Fail을 출력하세요. 총 점 100점 중 배점으로는 다음과 같다.
-	 * 중간고사 (20%), 기말고사 (30%), 과제 (30%), 출석 (20%)
+	 * int a ,b,c,d=0 중간고사 (20%), 기말고사 (30%), 과제 (30%), 출석 (20%)
 	 * 
 	 * 이 때, 출석 회수는 총 강의 회수 20회 중에서 출석한 날만 입력
 	 * 
 	 * 총 점이 70점 이상이면서 전체 강의의 70%이상 출석을 했을 경우 Pass, 아니면 Fail을 출력하세요.
+	 * 
 	 * 
 	 * 
 	 * 중간 고사 점수 : 80 기말 고사 점수 : 90 과제 점수 : 50 출석 회수 : 15 ===========결과========== 중간
@@ -301,20 +323,46 @@ public class ConditionPractice {
 	 * 
 	 */
 	public void practice11() {
+		int a, b, c, d, r = 0;
+		int f = 20;
+		float e = 0;
+		System.out.print("중간 고사 점수 : ");
+		a = sc.nextInt();
+		System.out.print("기말 고사 점수 : ");
+		b = sc.nextInt();
+		System.out.print("과제 점수 : ");
+		c = sc.nextInt();
+		System.out.print("출석 회수 : ");
+		d = sc.nextInt();
+		r = d * 5;
+		e = (int) ((a * 0.2) + (b * 0.3) + (c * 0.3) + (r * 0.2));
+
+		if (e >= 70 && d >= 14) {
+			System.out.println("총점 :" + e + "pass");
+		} else if (e < 70 && d < 14) {
+			System.out.println("FAIL [점수 미달] " + "[출석 횟수 부족] " + d + "/ " + f + "총점 :" + e);
+		} else if (e < 70) {
+			System.out.println("FAIL [점수 미달]" + "총점 :" + e);
+		}
+
+		else
+			System.out.println("FAIL 출석 횟수 부족 " + d + "/ " + f);
 
 	}
 
 	public static void main(String[] args) {
 		ConditionPractice p = new ConditionPractice();
-		// p.practice1();
+//	 p.practice1();
 		// p.practice2();
 		// p.practice3();
 		// p.practice4();
 		// p.practice5();
 		// p.practice6();
 		// p.practice7();
-		//p.practice8();
-		p.practice9();
+		// p.practice8();
+//		p.practice9();
+		// p.practice10();
+		// p.practice11();
 	}
 
 }
