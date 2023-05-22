@@ -354,7 +354,8 @@ public class ConditionPractice {
 		ConditionPractice p = new ConditionPractice();
 //	 p.practice1();
 		// p.practice2();
-		// p.practice3();
+		 p.practice3();
+		 
 		// p.practice4();
 		// p.practice5();
 		// p.practice6();

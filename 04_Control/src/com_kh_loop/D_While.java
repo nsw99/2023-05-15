@@ -103,7 +103,7 @@ public class D_While {
 	 */
 	public void method5() {
 		int a,b=0;
-		int random = (int) (Math.random()*100);
+		int random = (int) (Math.random()*100)+1;
 		while(true) {
 			System.out.println("1과 100사이의 값을 입력 > ");
 			a = sc.nextInt();
@@ -121,6 +121,93 @@ public class D_While {
 				
 			}
 		}
+	
+	/*
+	 *  1. 예금 2.출금 3.잔고 4.종료
+	 *  
+	 *  선택 > 1 
+	 *  예금액 > 5000
+	 *  -------------------------------
+	 *  1. 예금 2.출금 3.잔고 4.종료
+	 * 	
+	 * 선택 > 2
+	 * 출금액 > 2000
+	 * ------------------------
+	 * 
+	 * 1. 예금 2.출금 3.잔고 4.종료
+	 * 
+	 * 선택 3> 
+	 * 
+	 * 잔고> 3000
+	 * 
+	 * ----------------------------------
+	 * 
+	 * 선택>4 
+	 * 
+	 * 프로그램 종료
+	 * 
+	 */
+	
+	public void method6() {
+		int a=0;
+		int a1=0;
+		int b1=0;
+		int c1=0;
+		boolean a2 = true;
+		//Integer.paresInt : Integer 클래스의 parseInt 메소드
+		// String -> int 
+		
+		while(a2) {
+			System.out.println("1. 예금 2.출금 3.잔고 4.종료");
+			a = Integer.parseInt(sc.nextLine());
+//			if (a==1) {
+//				System.out.println("얼마를 입금 하시나요 ? :");
+//				a1 = sc.nextInt();
+//			}
+//			else if(a==2) {
+//				System.out.println("얼마를 출금 하시나요 ? :");
+//				b1 = sc.nextInt();
+//			}
+//			else if(a==3) {
+//				System.out.println("출금하실 금액은 : "+(a1-b1)+"원");
+//			}
+//			else if(a==4) {
+//				System.out.println("시스템을 종료합니다");break;	
+//			}
+//					
+			
+			switch(a) {
+			case 1:
+				System.out.println("얼마를 입금 하시나요 ? :");
+				a1 += Integer.parseInt(sc.nextLine());
+				break;
+			case 2:
+				System.out.println("얼마를 출금 하시나요 ? :");
+				a1 -= Integer.parseInt(sc.nextLine());
+				break;
+			case 3:	
+				System.out.println("출금하실 금액은 : "+a1+"원");
+				break;
+			case 4:
+				a2 = false;
+				System.out.println("시스템을 종료합니다");
+				
+			}
+			
+			
+			
+			}
+
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+
 		
 	
 
@@ -131,7 +218,8 @@ public class D_While {
 //	    d.method2();
 //		d.method3();
 //		d.method4();
-		d.method5();
+//		d.method5();
+		d.method6();
 
 	}
 
